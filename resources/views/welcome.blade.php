@@ -7,30 +7,74 @@
 
     <title>Laravel Vue with CDN</title>
 
+    <!-- Scripts -->
+    <script src="{{ asset('js/app.js') }}" defer></script>
 
 
     <!--Styles-->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css">
 
+
 </head>
 
 <body>
 
-    <div id="app">
-        <h1>Hello @{{ message }}</h1>
-    </div>
+    {{-- <div id="app">
+
+        <input v-model="text" placeholder="Type here">
+        <p>@{{ text }}</p>
+        <p>@{{ count }}</p>
+
+        <button @click="count++">Click Me</button>
+        <button v-on:click="say">Say what</button>
+
+    </div> --}}
 
 
     <!-- Vue CDN -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/3.2.33/vue.cjs.js"></script>
+    {{-- <script src="https://unpkg.com/vue@3"></script> --}}
+    {{-- <script src="{{ mix('js/app.js') }}"></script> --}}
+
+
     <script>
-        new Vue({
-            el: '#app',
-            data: {
-                message: 'Hello Vue.js!'
+        import {
+            createApp
+        } from 'vue'
+
+        createApp({
+            data() {
+                return {
+                    message: "Iqbal Hossen",
+                    count: 0,
+                    text: ''
+                }
             }
-        });
+        }).mount('#app')
     </script>
+
+    <div id="app">
+        <h1>Hello World! @{{ message }}</h1>
+    </div>
+
+
+    {{-- <script>
+        import {
+            createApp
+        } from 'vue'
+
+        const app = createApp({
+            data() {
+                return {
+                    message: "Iqbal Hossen",
+                    count: 0,
+                    text: ''
+                }
+            }
+        })
+
+        app.mount('#app')
+    </script> --}}
+
 </body>
 
 </html>
